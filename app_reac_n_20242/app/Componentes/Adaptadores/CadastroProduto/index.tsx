@@ -1,6 +1,8 @@
 import Produto from "@/app/Models/Produto";
+import axios from "axios";
 import { useState } from "react"
-import { Text, TextInput, View } from "react-native"
+import React = require("react");
+import { Button, Text, TextInput, View } from "react-native"
 
 
 
@@ -17,7 +19,7 @@ const CadastroProduto = ()=>{
             <Text   >Descricao:</Text>
             <TextInput onChangeText={setDescricao} value={descricao} />
             <Text>Preço:</Text>
-            <TextInput onChangeText={(v) => setPreco(parseFloat(v))} inputMode="numeric" value={PerformanceObserver.toString()} />
+            <TextInput onChangeText={(v) => setPreco(parseFloat(v))} inputMode="numeric" value={preço.toString()} />
             <Button title="Cadastrar" onPress={Cadastrar}></Button>
             
         </View>
@@ -27,9 +29,11 @@ const CadastroProduto = ()=>{
         let produto: Produto = {
             nome: nome,
             descricao: descricao,
-            preco: preco,
+            preco: preço,
         } as Produto;
         let api = 'https://api-docker-2t8m.onrender.com/api/produtos';
         axios.post(api, produto)
     }
 }
+
+export default CadastroProduto
