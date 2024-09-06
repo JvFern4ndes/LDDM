@@ -19,7 +19,7 @@ const CadastroProduto = ()=>{
             <Text   >Descricao:</Text>
             <TextInput onChangeText={setDescricao} value={descricao} />
             <Text>Preço:</Text>
-            <TextInput onChangeText={(v) => setPreco(parseFloat(v))} inputMode="numeric" value={preço.toString()} />
+            <TextInput onChangeText={(v) => setPreco( isNaN(parseFloat(v)) ? 0:parseFloat(v))} inputMode="numeric" value={preço.toString()} />
             <Button title="Cadastrar" onPress={Cadastrar}></Button>
             
         </View>
