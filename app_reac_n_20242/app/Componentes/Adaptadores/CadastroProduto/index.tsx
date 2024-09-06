@@ -1,3 +1,4 @@
+import Produto from "@/app/Models/Produto";
 import { useState } from "react"
 import { Text, TextInput, View } from "react-native"
 
@@ -21,4 +22,14 @@ const CadastroProduto = ()=>{
             
         </View>
     )
+
+    function Cadastrar() {
+        let produto: Produto = {
+            nome: nome,
+            descricao: descricao,
+            preco: preco,
+        } as Produto;
+        let api = 'https://api-docker-2t8m.onrender.com/api/produtos';
+        axios.post(api, produto)
+    }
 }
