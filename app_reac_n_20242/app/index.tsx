@@ -5,12 +5,9 @@ import axios from 'axios'
 import { useEffect } from "react";
 import CadastroProduto from "./Componentes/Adaptadores/CadastroProduto";
 
-
-
-
-
 export default function Index() {
-  let [contador,setContador]= useState(0);
+  const router = useRouter();
+
   let [produtos,setProdutos]= useState([]);
 
   useEffect(()=>{
@@ -31,18 +28,15 @@ export default function Index() {
       style={estilo.container}
     >
      <ListaProdutos produtos={produtos}></ListaProdutos>
-     <Button title={contador.toString()}
-      onPress={()=>{clicarBotao()}} >
+     <Button title='Cadastrar'
+      onPress={()=>{telaCadastro()}} >
      </Button>
-
-     <CadastroProduto/>
-
       
     </View>
   );
 
-  function clicarBotao(){
-    setContador(contador+1);
+  function telaCadastro(){
+    router.push('/cadastro');
   
   }
 }
